@@ -20,12 +20,12 @@ const Carousel = ({ data, loading }) => {
     const {url} = useSelector((state) => state.home);
     const navigate = useNavigate();
     
-    const navigation = ({dir}) => {
+    const navigation = (dir) => {
         const container = carouselContainer.current;
-        const scrollAmount = dir === "left" ? container.scrollLeft - (container.offsetWidth + 20) : container.scrollLeft - (container.offsetWidth + 20)
+        const scrollAmount = dir === "left" ? container.scrollLeft - (container.offsetWidth + 20) : container.scrollLeft + (container.offsetWidth + 20);
         container.scrollTo({
             left: scrollAmount,
-            behaviour: "smooth"
+            behavior: "smooth"
         })
     }
 
@@ -45,11 +45,11 @@ const Carousel = ({ data, loading }) => {
         <div className="carousel">
             <ContentWrapper>
                 <BsFillArrowLeftCircleFill
-                    className="courselLeftNav arrow"
+                    className="carouselLeftNav arrow"
                     onClick={() => navigation("left")}
                 />
                 <BsFillArrowRightCircleFill
-                    className="courselRightNav arrow"
+                    className="carouselRighttNav arrow"
                     onClick={() => navigation("right")}
                 />
                 {!loading ? (
